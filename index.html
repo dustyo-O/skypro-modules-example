@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .input_focused {
+      outline: 1px solid blueviolet;
+    }
+  </style>
+</head>
+<body>
+  <input class="input" />
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script>
+    console.log($);
+
+    $('.input').focus((e) => {
+      const $target = $(e.target);
+
+      $target.addClass('input_focused');
+    });
+
+    $('.input').blur((e) => {
+      const $target = $(e.target);
+
+      $target.removeClass('input_focused');
+    });
+  </script>
+</body>
+</html>
