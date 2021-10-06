@@ -4,15 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="node_modules/flat-ui/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+  <!-- Loading Flat UI -->
+  <link href="node_modules/flat-ui/css/flat-ui.css" rel="stylesheet">
   <style>
     .input_focused {
       outline: 1px solid blueviolet;
     }
+
+    .color {
+      width: 100px;
+      height: 100px;
+
+      border: 1px solid black;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
-  <input class="input" />
+  <input class="input form-control" />
+  <div class="color" readonly></div>
+  <textarea class="comment form-control"></textarea>
+  <input class="credit-card form-control">
   <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/vanilla-picker/dist/vanilla-picker.js"></script>
+  <script src="node_modules/autosize/dist/autosize.js"></script>
+  <script src="node_modules/inputmask/dist/inputmask.js"></script>
   <script>
     console.log($);
 
@@ -27,6 +45,31 @@
 
       $target.removeClass('input_focused');
     });
+
+    const colorDiv = document.querySelector('.color');
+    const picker = new Picker(colorDiv);
+
+    colorDiv.addEventListener('focus', (e) => {
+      e.preventDefault();
+    });
+
+    const comment = document.querySelector('.comment');
+
+    autosize(comment);
+    /*
+        You can do what you want with the chosen color using two callbacks: onChange and onDone.
+    */
+    picker.onChange = function(color) {
+      console.log(color);
+
+      colorDiv.style.background = color.rgbaString;
+      // colorDiv.value = color.rgbaString;
+    };
+
+    const creditCard = document.querySelector('.credit-card');
+
+    const im = new Inputmask("9999-9999-9999-9999");
+    im.mask(creditCard);
   </script>
 </body>
 </html>

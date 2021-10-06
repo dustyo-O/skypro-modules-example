@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autosize": "5.0.1",
+    "flat-ui": "^2.1.1",
     "http-server": "13.0.2",
-    "jquery": "3.6.0"
+    "inputmask": "^5.0.6",
+    "jquery": "3.6.0",
+    "vanilla-picker": "2.11.2"
   }
 }
